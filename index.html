@@ -1,74 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come
-    *after* these tags -->
-    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon"/>
-    <title>Song App</title>
 
-    <!--Super  Reset CSS To resetting (Remove) browsers default Property-->
-    <link rel="stylesheet" type="text/css" href="stylesheet\Super_Reset.css">
-    <!-- Bootstrap -->
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="bootstrap-3.3.7\css\bootstrap.min.css">
-      <!-- jQuery library -->
-      <script src="bootstrap-3.3.7\jquery\jquery-3.2.1.min.js"></script>
-      <!-- Latest compiled JavaScript -->
-      <script src="bootstrap-3.3.7\js\bootstrap.min.js"></script>
-      <!-- Optional theme -->
-      <link rel="stylesheet" href="bootstrap-3.3.7\css\bootstrap-theme.min.css">
-      <!-- Font-Awsome Connecting Link -->
-      <link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
+<head>
+    <meta charset="UTF-8">
+    <title> Song App</title>
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0\css\font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet\main.css">
+</head>
 
-      <!--google-fonts
-      font-family: 'Metal Mania', cursive;
-      font-family: 'Quicksand', sans-serif;
-      font-family: 'Tangerine', cursive;
-      font-family: 'Open Sans', sans-serif;
-      font-family: 'Roboto', sans-serif;
-       -->
-      <link href="https://fonts.googleapis.com/css?family=Metal+Mania|Open+Sans|Quicksand|Roboto|Tangerine" rel="stylesheet">
+<body>
+    <div class="wrapper">
+      <!-- code for Welcome Screen -->
+        <section class="welcome-screen hidden">
+            <h1> Welcome to Songify </h1>
+            <h3> Enter name to access your account </h3>
+            <p  class="warning hidden">Please Enter a Valid Name</p>
+            <div class="input-wrapper">
+                <input type="text" placeholder="Name" value="" id="name-input">
+                <button> Go </button>
+            </div>
+        </section>
+        <!-- code For Main Screen -->
+        <div class="main">
+        <header> <div class="right floated user-name">  </div> </header>
+        <section class="content">
+          <!-- code For Adding audio File Into html Documaent -->
+          <audio src="Audio\Alla Hafiz.mp3" controls autoplay></audio>
+          <!-- <video src="Video\Agar Tu Hota.mp4" controls height="150px">
+          </video> -->
+        </section>
+        <footer>
+        <div class="controls">
+        <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
+        </div>
+        </footer>
+        </div>
+    </div>
+    <script src="js\jquery-3.2.1.min.js">
+    </script>
+    <script>
 
-    <!--Any Other CSS and JavaScript File must Come *After*These -->
-      <link rel="stylesheet" type="text/css" href="stylesheet/main.css">
-      <script var gender = "male";
-console.log(gender); type="text/javascript" src="js/main.js"></script>
-      <style>
+    // // old javascript code in code javascript language
+    //         var button = document.querySelector('.welcome-screen button');
+    //         button.addEventListener('click',function()
+    //       {
+    //         // alert('you Clicked me');
+    //         var name = document.querySelector('#name-input').value;
+    //         console.log(name);
+    //       });
 
+$('.welcome-screen button').on('click', function() {
+    var name = $('#name-input').val();
+    if(name.length >2){
+    var message = "Welcome, " + name;
+    $('.main .user-name').text(message);
+    $('.welcome-screen').addClass('hidden');
+    $('.main').removeClass('hidden');
+  }
+  else{
+    $('#name-input').addClass('error');
+    alert("Please Enter a Valid Name");
+    $('.warning').removeClass('hidden');
+  }
+});
+ var song = document.querySelector('play-icon');
+ song.addEventListener('click',function(){
+  
+ })
+</script>
+</body>
 
-
-      </style>
-  </head>
-  <body>
-      <div class="wrapper">
-          <section class="welcome-screen">
-              <h1> Welcome to Songify </h1>
-              <h3> Enter name to access your account </h3>
-              <div class="input-wrapper">
-                  <input type="text" value="" placeholder="Name" id="name-input">
-                  <button> Go </button>
-              </div>
-          </section>
-          <section class="main hidden">
-              <h1>  </h1>
-          </section>
-      </div>
-      <script>
-      var button = document.querySelector('.welcome-screen button');
-      button.addEventListener('click',function() {
-      alert('You clicked me');
-      });
-
-
-
-        button.addEventListener('click', function() {
-        var name = document.querySelector('#name-input').value;
-        console.log(input)
-        });
-      </script>
-
-  </body>
 </html>

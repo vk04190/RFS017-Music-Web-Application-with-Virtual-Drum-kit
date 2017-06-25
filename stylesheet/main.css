@@ -38,10 +38,55 @@ h1 {
     height: 100%;
     display: flex;
     flex-direction: column;
+    color: white;
+}
+
+.main header {
+    height: 80px;
+    background-color: #282828;
+    padding: 1rem;
+    color: #FFF;
+}
+
+.main .content {
+    flex:1;
+    background-color: #1f1f1f;
+}
+
+.main footer {
+    height: 80px;
+    background-color: #282828;
+    padding-top: 1rem;
+}
+
+.controls {
+    display:flex;
     justify-content: center;
     align-items: center;
+    font-size: 2rem;
 }
 
 .hidden {
     display: none;
+}
+
+.right.floated {
+    float: right;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.error {
+    border: 2px solid red;
+}
+.warning{
+  color: red;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.play-icon {
+    // color: teal;
 }
