@@ -25,7 +25,7 @@
         <header> <div class="right floated user-name">  </div> </header>
         <section class="content">
           <!-- code For Adding audio File Into html Documaent -->
-          <audio src="Audio\Alla Hafiz.mp3" controls autoplay></audio>
+          <audio src="Audio\Alla Hafiz.mp3"></audio>
           <!-- <video src="Video\Agar Tu Hota.mp4" controls height="150px">
           </video> -->
         </section>
@@ -63,10 +63,70 @@ $('.welcome-screen button').on('click', function() {
     $('.warning').removeClass('hidden');
   }
 });
- var song = document.querySelector('play-icon');
- song.addEventListener('click',function(){
-  
- })
+
+//  code for run the function ater 5 second of loading website
+     //  setTimeout(function(){
+     //  var name;
+     //  name=document.querySelector('#name-input').value;
+     // console.log(name);
+     // },5000);
+
+
+            // my Own Play and Pause Button In js by using Class Interchnage Concept
+            // <i class="fa fa-play clickable play-icon play playsong" aria-hidden="true"></i>
+                    // $('.playsong').on('click',function(){
+                    //   var song = document.querySelector('audio');
+                      // $('.play').addClass('fa-pause');
+                      // $('.play').addClass('pausesong');
+                      // $('.play').removeClass('fa-play');
+                    //   song.play();
+                    //   console.log('play it');
+                    // });
+                    //
+                    // $('.pausesong').on('click',function(){
+                    //   var song = document.querySelector('audio');
+                    //   $('.play').addClass('fa-play');
+                    //   $('.play').addClass('playsong');
+                    //   $('.play').removeClass('fa-pause');
+                    //   song.pause();
+                    //   console.log('stop it')
+                    // });
+
+// code for Play and Pause Butoon by using if else Condition
+    // code for play-icon click event function
+    $('.play-icon').on('click', function(){
+      var song = document.querySelector('audio');
+      // it check wheather the Condition is true song is paused
+      if(song.paused == true){
+        // console.log("play it");
+        song.play();
+        $('.play-icon').addClass('fa-pause').removeClass('fa-play');
+      }
+      else{
+        // console.log("Pause it");
+        song.pause();
+        $('.play-icon').addClass('fa-play').removeClass('fa-pause');
+      }
+    });
+
+// same code for check is keypress from keyboard or not
+  $('body').on('keypress',function(event) {
+    // check if the keypress is space bar (ASCII 32 OF Space Bar) or not
+    if (event.keyCode == 32){
+      var song = document.querySelector('audio');
+      // it check wheather the Condition is true song is paused
+      if(song.paused == true){
+        // console.log("play it");
+        song.play();
+        $('.play-icon').addClass('fa-pause').removeClass('fa-play');
+      }
+      else{
+        // console.log("Pause it");
+        song.pause();
+        $('.play-icon').addClass('fa-play').removeClass('fa-pause');
+      }
+    }
+  });
 </script>
 </body>
 
