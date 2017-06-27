@@ -199,6 +199,54 @@ $('body').on('keypress',function(event) {
           //   });
 
 
+
+
+// javascript function for converting a bulks seconds into a standandard time format
+
+                                    //here 'time' is a formal parameter which is passed(takes values) by the calling function like 'currentTime' and 'duration'
+                                      function fancyTimeFormat(time)
+                                      {
+                                          // Hours, minutes and seconds
+                                            //here second converting into hours like time=47000sec is 47000sec/(60*60)=1hrs and 1100sec that will be like time/3600
+                                          var hrs = ~~(time / 3600);
+                                          //and the left second are converted into minutes like 1100sec/60=18minutes and 20sec that will be (time%3600)/60=total minutea+left seconds
+                                          var mins = ~~((time % 3600) / 60);
+                                          //and the left Seconds now devided by 60 if not possible make it remenders like 20/60 not devisible so remaining seconds are 20 sec
+                                          var secs = time % 60;
+                                          //so the answer is 47000sec=1hrs 18 minutes and 20 seconds in following format
+                                          // Output like "1:01" or "4:03:59" or "123:03:59"
+                                          var ret = "";           //here creates a local variable  string with blank
+
+                                          if (hrs > 0) {          //condition check if hours values is greater then 0 then go for next
+                                              ret += "" + hrs + ":" + (mins < 10 ? "0" : "");  //if hour value is greater it shows time in this formate like 01: 18 : 20
+                                          }
+
+                                          ret += "" + mins + ":" + (secs < 10 ? "0" : "");       //or if not hours  it shows like this one 18 : 20
+                                          ret += "" + secs;      //if only seconds are presented in time variable the it will shows like 20
+                                          return ret;           //after that it will return the value to the function from local variable ret to the storge variable
+                                      }
+
+
+// function for current time and duration calculation of songs
+  function updateCurrentTime(){
+      var song = document.querySelector('audio');
+    // console.log(song.currentTime);
+    // console.log(song.duration);
+      var currentTime = Math.floor(song.currentTime);
+      //it sends the value to the from currenttime to 'time' and after that get value from ret to CurrentTime
+      currentTime = fancyTimeFormat(currentTime);
+      var duration = Math.floor(song.duration);
+      //it sends the value to the from duration to 'time' and after that get value from ret to duration
+      duration = fancyTimeFormat(duration);
+      $('.time-elapsed').text(currentTime);
+      $('.song-duration').text(duration);
+  }
+
+window.onload = function(){
+  setInterval(function(){ //code like setTimeout but it will change the time at every 1 sec
+    updateCurrentTime();
+  },1000);//here 1000=1 sec for time out time period
+}
 </script>
 </body>
 
