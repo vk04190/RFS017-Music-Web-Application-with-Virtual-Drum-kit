@@ -22,32 +22,61 @@
         </section>
         <!-- code For Main Screen -->
         <div class="main">
-        <header> <div class="right floated user-name">  </div> </header>
+        <header>
+          <div class="right floated user-name">  </div>
+        </header>
         <section class="content">
           <!-- code For Adding audio File Into html Documaent -->
           <audio src="Audio\Alla Hafiz.mp3"></audio>
           <!-- <video src="Video\Agar Tu Hota.mp4" controls height="150px">
           </video> -->
+
+          <div class="list-headers">
+              <div> Title </div>
+              <div> Artist </div>
+              <div> Album </div>
+              <div> Duration </div>
+          </div>
+          <div class="song-list">
+              <div class="song">
+                <span class="song-name"></span>
+                <span class="song-artist"></span>
+                <span class="song-album"></span>
+                <span class="song-length"></span>
+              </div>
+          </div>
         </section>
         <footer>
-        <div class="controls">
-        <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
-        </div>
+            <div class="controls">
+              <div class="player-buttons">
+                <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
+            </div>
+            <div class="progress-wrapper">
+                  <span class="time-elapsed"> </span>
+                  <div class="player-progress">
+                      <div class="progress-filled"> </div>
+                  </div>
+                  <span class="song-duration"></span>
+              </div>
+          </div>
         </footer>
         </div>
     </div>
+
+
+
     <script src="js\jquery-3.2.1.min.js">
     </script>
     <script>
 
-    // // old javascript code in code javascript language
-    //         var button = document.querySelector('.welcome-screen button');
-    //         button.addEventListener('click',function()
-    //       {
-    //         // alert('you Clicked me');
-    //         var name = document.querySelector('#name-input').value;
-    //         console.log(name);
-    //       });
+                  // // old javascript code in code javascript language
+                  //         var button = document.querySelector('.welcome-screen button');
+                  //         button.addEventListener('click',function()
+                  //       {
+                  //         // alert('you Clicked me');
+                  //         var name = document.querySelector('#name-input').value;
+                  //         console.log(name);
+                  //       });
 
 $('.welcome-screen button').on('click', function() {
     var name = $('#name-input').val();
@@ -93,40 +122,83 @@ $('.welcome-screen button').on('click', function() {
                     // });
 
 // code for Play and Pause Butoon by using if else Condition
-    // code for play-icon click event function
-    $('.play-icon').on('click', function(){
-      var song = document.querySelector('audio');
-      // it check wheather the Condition is true song is paused
-      if(song.paused == true){
-        // console.log("play it");
-        song.play();
-        $('.play-icon').addClass('fa-pause').removeClass('fa-play');
-      }
-      else{
-        // console.log("Pause it");
-        song.pause();
-        $('.play-icon').addClass('fa-play').removeClass('fa-pause');
-      }
-    });
 
-// same code for check is keypress from keyboard or not
-  $('body').on('keypress',function(event) {
-    // check if the keypress is space bar (ASCII 32 OF Space Bar) or not
-    if (event.keyCode == 32){
+ //old Code For playing song when icon of play button or space key from keybord is pressed " Using Function Concept"
+
+
+    //fuction for Audio Play and Pause
+    function toggleSong(){
       var song = document.querySelector('audio');
-      // it check wheather the Condition is true song is paused
-      if(song.paused == true){
-        // console.log("play it");
+      // it check wheather the Song status paused or not if paused it plays if not it paly
+      if(song.paused == true) {
+        // code For paly The Song
+        console.log('paying the Music');
+        $('.play-icon').removeClass('fa-play').addClass('fa-pause');
         song.play();
-        $('.play-icon').addClass('fa-pause').removeClass('fa-play');
       }
       else{
-        // console.log("Pause it");
+        // code for pause the song
+        console.log('pausing the Music');
+        $('.play-icon').removeClass('fa-pause').addClass('fa-play');
         song.pause();
-        $('.play-icon').addClass('fa-play').removeClass('fa-pause');
       }
     }
+
+// code for calling the function when .play-icon class button is press
+$('.play-icon').on('click',function(event){
+  toggleSong();
+});
+
+//code for Calling the function when the spacebar(32) is prassed from keyboard
+$('body').on('keypress',function(event) {
+  if (event.keyCode == 32)
+  {
+    toggleSong();
+    }
   });
+
+
+
+
+
+// //old Code For playing song when icon of play button or space key from keybord is pressed "without Using Function Concept"
+
+          //     // code for play-icon click event function
+          //     $('.play-icon').on('click', function(){
+          //       var song = document.querySelector('audio');
+          //       // it check wheather the Condition is true song is paused
+          //       if(song.paused == true){
+          //         // console.log("play it");
+          //         song.play();
+          //         $('.play-icon').addClass('fa-pause').removeClass('fa-play');
+          //       }
+          //       else{
+          //         // console.log("Pause it");
+          //         song.pause();
+          //         $('.play-icon').addClass('fa-play').removeClass('fa-pause');
+          //       }
+          //     });
+          //
+          // // same code for check is keypress from keyboard or not
+          //   $('body').on('keypress',function(event) {
+          //     // check if the keypress is space bar (ASCII 32 OF Space Bar) or not
+          //     if (event.keyCode == 32){
+          //       var song = document.querySelector('audio');
+          //       // it check wheather the Condition is true song is paused
+          //       if(song.paused == true){
+          //         // console.log("play it");
+          //         song.play();
+          //         $('.play-icon').addClass('fa-pause').removeClass('fa-play');
+          //       }
+          //       else{
+          //         // console.log("Pause it");
+          //         song.pause();
+          //         $('.play-icon').addClass('fa-play').removeClass('fa-pause');
+          //       }
+          //     }
+          //   });
+
+
 </script>
 </body>
 
