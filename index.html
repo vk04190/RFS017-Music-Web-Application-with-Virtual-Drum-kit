@@ -228,25 +228,31 @@ $('body').on('keypress',function(event) {
 
 
 // function for current time and duration calculation of songs
-  function updateCurrentTime(){
-      var song = document.querySelector('audio');
-    // console.log(song.currentTime);
-    // console.log(song.duration);
-      var currentTime = Math.floor(song.currentTime);
-      //it sends the value to the from currenttime to 'time' and after that get value from ret to CurrentTime
-      currentTime = fancyTimeFormat(currentTime);
-      var duration = Math.floor(song.duration);
-      //it sends the value to the from duration to 'time' and after that get value from ret to duration
-      duration = fancyTimeFormat(duration);
-      $('.time-elapsed').text(currentTime);
-      $('.song-duration').text(duration);
-  }
+                  function updateCurrentTime(){
+                      var song = document.querySelector('audio');
+                    // console.log(song.currentTime);
+                    // console.log(song.duration);
+                      var currentTime = Math.floor(song.currentTime);
+                      //it sends the value to the from currenttime to 'time' and after that get value from ret to CurrentTime
+                      currentTime = fancyTimeFormat(currentTime);
+                      var duration = Math.floor(song.duration);
+                      //it sends the value to the from duration to 'time' and after that get value from ret to duration
+                      duration = fancyTimeFormat(duration);
+                      $('.time-elapsed').text(currentTime);
+                      $('.song-duration').text(duration);
+                  }
 
-window.onload = function(){
-  setInterval(function(){ //code like setTimeout but it will change the time at every 1 sec
-    updateCurrentTime();
-  },1000);//here 1000=1 sec for time out time period
-}
+                var songName = 'Alla Hafiz';
+
+                window.onload = function(){
+                  $('.song-name').text(songName);
+                  updateCurrentTime();
+                  setInterval(function(){ //code like setTimeout but it will change the time at every 1 sec
+                    updateCurrentTime();
+                  },1000);//here 1000=1 sec for time out time period
+                }
+
+
 </script>
 </body>
 
