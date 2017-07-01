@@ -121,38 +121,106 @@ $('body').on('keypress',function(event) {
                             'song4.mp3'
                           ];
 //Code For Playing 1st song by clicking on it
-                 $('#song1').click(function() {                   //select id=song1 using jquery
-                    var audio = document.querySelector('audio');    //it select the element or tags with name audio and store it on Audio variable
-                    audio.src = fileNames[0];                       //it will change the audio tags attribute Src to Array fileNames[0] means 1st element
-                    //audio.play();                                   //then it will play the song
+              $('#song1').click(function() {
+              var audio = document.querySelector('audio');
+              var currentSong = audio.src;
+              if(currentSong.search(fileNames[0]) != -1) //check for string are match or not with old played song
+                {
+                  toggleSong();
+                }
+              else {
+                  audio.src = fileNames[0];
                     toggleSong();
-                  });
-// for 2nd song
-                  $('#song2').click(function() {
-                      var audio = document.querySelector('audio');
-                      audio.src = fileNames[1];
-                      // audio.play();
-                      toggleSong();
-                  });
-// for 3rd song
-                  $('#song3').click(function() {
-                      var audio = document.querySelector('audio');
-                      audio.src = fileNames[2];
-                      // audio.play();
-                      toggleSong();
-                  });
-// for 4th song
-                  $('#song4').click(function() {
-                      var audio = document.querySelector('audio');
-                      audio.src = fileNames[3];
-                      // audio.play();
-                      toggleSong();
-                  });
+                  }
+              });
+//for 2nd song
+              $('#song2').click(function() {
+              var audio = document.querySelector('audio');
+              var currentSong = audio.src;
+              if(currentSong.search(fileNames[1]) != -1)
+                {
+                  toggleSong();
+                }
+              else {
+                  audio.src = fileNames[1];
+                    toggleSong();
+                  }
+              });
+//for 3rd song
+              $('#song3').click(function() {
+              var audio = document.querySelector('audio');
+              var currentSong = audio.src;
+              if(currentSong.search(fileNames[2]) != -1)
+                {
+                  toggleSong();
+                }
+              else {
+                  audio.src = fileNames[2];
+                    toggleSong();
+                  }
+              });
+//for 4th song
+              $('#song4').click(function() {
+              var audio = document.querySelector('audio');
+              var currentSong = audio.src;
+              if(currentSong.search(fileNames[4]) != -1)
+                {
+                  toggleSong();
+                }
+              else {
+                  audio.src = fileNames[0];
+                    toggleSong();
+                  }
+              });
+
 
 
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+// // old code in which click to pause not work
+//                  $('#song1').click(function() {                   //select id=song1 using jquery
+//                     var audio = document.querySelector('audio');    //it select the element or tags with name audio and store it on Audio variable
+//                     audio.src = fileNames[0];                       //it will change the audio tags attribute Src to Array fileNames[0] means 1st element
+//                     //audio.play();                                   //then it will play the song
+//                     toggleSong();
+//                   });
+// // for 2nd song
+//                   $('#song2').click(function() {
+//                       var audio = document.querySelector('audio');
+//                       audio.src = fileNames[1];
+//                       // audio.play();
+//                       toggleSong();
+//                   });
+// // for 3rd song
+//                   $('#song3').click(function() {
+//                       var audio = document.querySelector('audio');
+//                       audio.src = fileNames[2];
+//                       // audio.play();
+//                       toggleSong();
+//                   });
+// // for 4th song
+//                   $('#song4').click(function() {
+//                       var audio = document.querySelector('audio');
+//                       audio.src = fileNames[3];
+//                       // audio.play();
+//                       toggleSong();
+//                   });
+//
+
+
+
 
 
 
