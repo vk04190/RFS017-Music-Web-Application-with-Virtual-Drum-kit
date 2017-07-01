@@ -39,12 +39,18 @@
           </div>
           <div class="song-list">
               <div class="song">
-                <span class="song-name"></span>
-                <span class="song-artist"></span>
-                <span class="song-album"></span>
-                <span class="song-length"></span>
+                <span id="song1" class="song-name"> </span>
               </div>
-          </div>
+              <div class="song">
+                <span id="song2" class="song-name"> </span>
+              </div>
+              <div class="song">
+                <span id="song3" class="song-name"> </span>
+              </div>
+              <div class="song">
+                <span id="song4" class="song-name"> </span>
+              </div>
+            </div>
         </section>
         <footer>
             <div class="controls">
@@ -242,16 +248,28 @@ $('body').on('keypress',function(event) {
                       $('.song-duration').text(duration);
                   }
 
-                var songName = 'Alla Hafiz';
 
-                window.onload = function(){
-                  $('.song-name').text(songName);
+
+                  var songList = ['Badri Ki Dulhania (Title Track)',
+                   'Humma Song', 'Nashe Si Chadh Gayi', 'The Breakup Song'];
+
+                window.onload = function() {
+                  $('#song1 .song-name').text(songList[0]);
+                  $('#song2 .song-name').text(songList[1]);
+                  $('#song3 .song-name').text(songList[2]);
+                  $('#song4 .song-name').text(songList[3]);
                   updateCurrentTime();
-                  setInterval(function(){ //code like setTimeout but it will change the time at every 1 sec
+                  setInterval(function() {
                     updateCurrentTime();
-                  },1000);//here 1000=1 sec for time out time period
+                  },1000);
                 }
 
+                 var fileNames = ['song1.mp3','song2.mp3','song3.mp3','song4.mp3'];
+                 $('#song1').click(function() {
+                  var audio = document.querySelector('audio');
+                  audio.src = fileNames[0];
+                  audio.play();
+                  });
 
 </script>
 </body>
