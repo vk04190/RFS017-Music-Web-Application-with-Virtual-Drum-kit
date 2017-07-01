@@ -1,13 +1,4 @@
 
-                  // // old javascript code in code javascript language
-                  //         var button = document.querySelector('.welcome-screen button');
-                  //         button.addEventListener('click',function()
-                  //       {
-                  //         // alert('you Clicked me');
-                  //         var name = document.querySelector('#name-input').value;
-                  //         console.log(name);
-                  //       });
-
 $('.welcome-screen button').on('click', function() {
     var name = $('#name-input').val();
     if(name.length >2){
@@ -101,14 +92,17 @@ $('body').on('keypress',function(event) {
 
 
 
+
         //Array OF Song Name
-          var songList = ['Badri Ki Dulhania (Title Track)',
-                'Humma Song',
-                'Nashe Si Chadh Gayi',
-                'The Breakup Song'];
-        //after Loading The Html File This Js Code Will Automatically Run
+          var songList = [
+                          'Badri Ki Dulhania (Title Track)',  //[0] of songList that is songList[0]; like wise
+                          'Humma Song',
+                          'Nashe Si Chadh Gayi',
+                          'The Breakup Song'
+                        ];
+    //after Loading The Html File This Js Code Will Automatically Run
         window.onload = function() {
-                  $('#song1 .song-name').text(songList[0]);
+                  $('#song1 .song-name').text(songList[0]); //code for secectiong id=Song1 inside class=song-name and add text or inner text first element 'string' of array SongList[];
                   $('#song2 .song-name').text(songList[1]);
                   $('#song3 .song-name').text(songList[2]);
                   $('#song4 .song-name').text(songList[3]);
@@ -117,20 +111,67 @@ $('body').on('keypress',function(event) {
                     updateCurrentTime();
                   },1000);                                     //this function say to update Current time at each (1 sec =1000) 1 second
                 }
-          //Array of Songs file scann form current Directory
-          var fileNames = ['song1.mp3','song2.mp3','song3.mp3','song4.mp3'];
-                 $('#song1').click(function() {
-                  var audio = document.querySelector('audio');
-                  audio.src = fileNames[0];
-                  audio.play();
+
+
+  //Array of Songs file scann form current Directory
+          var fileNames = [
+                            'song1.mp3',    //[0] of fileNames that is fileNames[0];
+                            'song2.mp3',
+                            'song3.mp3',
+                            'song4.mp3'
+                          ];
+//Code For Playing 1st song by clicking on it
+                 $('#song1').click(function() {                   //select id=song1 using jquery
+                    var audio = document.querySelector('audio');    //it select the element or tags with name audio and store it on Audio variable
+                    audio.src = fileNames[0];                       //it will change the audio tags attribute Src to Array fileNames[0] means 1st element
+                    //audio.play();                                   //then it will play the song
+                    toggleSong();
+                  });
+// for 2nd song
+                  $('#song2').click(function() {
+                      var audio = document.querySelector('audio');
+                      audio.src = fileNames[1];
+                      // audio.play();
+                      toggleSong();
+                  });
+// for 3rd song
+                  $('#song3').click(function() {
+                      var audio = document.querySelector('audio');
+                      audio.src = fileNames[2];
+                      // audio.play();
+                      toggleSong();
+                  });
+// for 4th song
+                  $('#song4').click(function() {
+                      var audio = document.querySelector('audio');
+                      audio.src = fileNames[3];
+                      // audio.play();
+                      toggleSong();
                   });
 
 
 
 
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
+// // Old Code For Dynamically Show The Song Name
+//     var songName1 = 'Badri Ki Dulhania (Title Track)';
+//     var songName2 = 'Humma Song';
+//     var songName3 = 'Nashe Si Chadh Gayi';
+//     var songName4 = 'The Breakup Song';
+//
+//     window.onload = function(){
+//       $('#song1 .song-name').text(songName1);
+//       $('#song2 .song-name').text(songName2);
+//       $('#song3 .song-name').text(songName3);
+//       $('#song4 .song-name').text(songName4);
+//       updateCurrentTime();
+//       setInterval(function(){ //code like setTimeout but it will change the time at every 1 sec
+//         updateCurrentTime();
+//       },1000);//here 1000=1 sec for time out time period
+//     }
 
 
 
@@ -211,3 +252,14 @@ $('body').on('keypress',function(event) {
            //       }
            //     }
            //   });
+
+
+
+                             // // old javascript code in code javascript language
+                             //         var button = document.querySelector('.welcome-screen button');
+                             //         button.addEventListener('click',function()
+                             //       {
+                             //         // alert('you Clicked me');
+                             //         var name = document.querySelector('#name-input').value;
+                             //         console.log(name);
+                             //       });
