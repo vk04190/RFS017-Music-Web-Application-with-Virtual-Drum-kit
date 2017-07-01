@@ -121,38 +121,59 @@ $('body').on('keypress',function(event) {
             }
 
 
+            function addSongNameClickEvent(songObj,position) {
+                var songName = songObj.fileName;
+                var id = '#song' + position;
+                $(id).click(function() {
+                  var audio = document.querySelector('audio');
+                  var currentSong = audio.src;
+                if(currentSong.search(songName) != -1) //check for string are match or not with old played song
+                  {
+                    toggleSong();
+                  }
+                    else {
+                        audio.src = songName;
+                        toggleSong();
+                        changeCurrentSongDetails(songObj); // Function Call
+                   }
+                });
+            }
+
+// Array of objects for storing the Song details
             var songs = [{
                     'name': 'Badri Ki Dulhania (Title Track)',
                     'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
                     'album': 'Badrinath ki Dulhania',
                     'duration': '2:56',
-                   'fileName': 'song1.mp3'
+                   'fileName': 'song1.mp3',
+                   'images': 'song1.jpg'
                 },
                 {
                     'name': 'Humma Song',
                     'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
                     'album': 'Ok Jaanu',
                     'duration': '3:15',
-                    'fileName': 'song2.mp3'
+                    'fileName': 'song2.mp3',
+                    'images': 'song2.jpg'
                 },
                 {
                     'name': 'Nashe Si Chadh Gayi',
                     'artist': 'Arijit Singh',
                     'album': 'Befikre',
                     'duration': '2:34',
-                    'fileName': 'song3.mp3'
+                    'fileName': 'song3.mp3',
+                    'images': 'song3.jpg'
                 },
                 {
                     'name': 'The Breakup Song',
                     'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
                     'album': 'Ae Dil Hai Mushkil',
                     'duration': '2:29',
-                    'fileName': 'song4.mp3'
+                    'fileName': 'song4.mp3',
+                    'images': 'song4.jpg'
                 }]
 
-
-
-                window.onload = function() {
+            window.onload = function() {
 
                       for(var i =0; i < songs.length; i++) {
                           var obj = songs[i];
@@ -162,10 +183,16 @@ $('body').on('keypress',function(event) {
                           song.find('.song-artist').text(obj.artist);
                           song.find('.song-album').text(obj.album);
                           song.find('.song-length').text(obj.duration);
-                          addSongNameClickEvent(obj.fileName,i+1);
+                          addSongNameClickEvent(obj,i+1);
                       }
                   }
 
+//function for changing current song details when ever songs chnages
+            function changeCurrentSongDetails(songobj){
+              $('.current-song-image').attr('src', 'img/' + songobj.images); //code forusing jQuery to select the element with class 'current-song-image' and dynamically adding images in the somgs plalyed
+              $('.current-song-name').text('songobj.name');
+              $('current-song-album').text('songobj.album');
+            }
 
 
 
