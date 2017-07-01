@@ -1,4 +1,6 @@
 
+
+
 $('.welcome-screen button').on('click', function() {
     var name = $('#name-input').val();
     if(name.length >2){
@@ -92,86 +94,79 @@ $('body').on('keypress',function(event) {
 
 
 
+//Code for auto song Scan from file by its name
+        //Array of Songs file scann form current Directory
+            var fileNames = [
+                                  'song1.mp3',    //[0] of fileNames that is fileNames[0];
+                                  'song2.mp3',
+                                  'song3.mp3',
+                                  'song4.mp3'
+                                ];
 
-        //Array OF Song Name
-          var songList = [
-                          'Badri Ki Dulhania (Title Track)',  //[0] of songList that is songList[0]; like wise
-                          'Humma Song',
-                          'Nashe Si Chadh Gayi',
-                          'The Breakup Song'
-                        ];
-    //after Loading The Html File This Js Code Will Automatically Run
-        window.onload = function() {
-                  $('#song1 .song-name').text(songList[0]); //code for secectiong id=Song1 inside class=song-name and add text or inner text first element 'string' of array SongList[];
-                  $('#song2 .song-name').text(songList[1]);
-                  $('#song3 .song-name').text(songList[2]);
-                  $('#song4 .song-name').text(songList[3]);
-                  updateCurrentTime();                        //it will update the Current time of played song
-                  setInterval(function() {
-                    updateCurrentTime();
-                  },1000);                                     //this function say to update Current time at each (1 sec =1000) 1 second
+      // new Smart Function For Doing all songs playing on click by it self
+            function addSongNameClickEvent(songName, position) {
+              var id = '#song' + position;
+              $(id).click(function() {
+                var audio = document.querySelector('audio');
+                var currentSong = audio.src;
+              if(currentSong.search(songName) != -1) //check for string are match or not with old played song
+                {
+                  toggleSong();
                 }
+              else {
+                  audio.src = songName;
+                  toggleSong();
+                  }
+              });
+            }
 
 
-  //Array of Songs file scann form current Directory
-          var fileNames = [
-                            'song1.mp3',    //[0] of fileNames that is fileNames[0];
-                            'song2.mp3',
-                            'song3.mp3',
-                            'song4.mp3'
-                          ];
-//Code For Playing 1st song by clicking on it
-              $('#song1').click(function() {
-              var audio = document.querySelector('audio');
-              var currentSong = audio.src;
-              if(currentSong.search(fileNames[0]) != -1) //check for string are match or not with old played song
+            var songs = [{
+                    'name': 'Badri Ki Dulhania (Title Track)',
+                    'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
+                    'album': 'Badrinath ki Dulhania',
+                    'duration': '2:56',
+                   'fileName': 'song1.mp3'
+                },
                 {
-                  toggleSong();
-                }
-              else {
-                  audio.src = fileNames[0];
-                    toggleSong();
-                  }
-              });
-//for 2nd song
-              $('#song2').click(function() {
-              var audio = document.querySelector('audio');
-              var currentSong = audio.src;
-              if(currentSong.search(fileNames[1]) != -1)
+                    'name': 'Humma Song',
+                    'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
+                    'album': 'Ok Jaanu',
+                    'duration': '3:15',
+                    'fileName': 'song2.mp3'
+                },
                 {
-                  toggleSong();
-                }
-              else {
-                  audio.src = fileNames[1];
-                    toggleSong();
-                  }
-              });
-//for 3rd song
-              $('#song3').click(function() {
-              var audio = document.querySelector('audio');
-              var currentSong = audio.src;
-              if(currentSong.search(fileNames[2]) != -1)
+                    'name': 'Nashe Si Chadh Gayi',
+                    'artist': 'Arijit Singh',
+                    'album': 'Befikre',
+                    'duration': '2:34',
+                    'fileName': 'song3.mp3'
+                },
                 {
-                  toggleSong();
-                }
-              else {
-                  audio.src = fileNames[2];
-                    toggleSong();
+                    'name': 'The Breakup Song',
+                    'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
+                    'album': 'Ae Dil Hai Mushkil',
+                    'duration': '2:29',
+                    'fileName': 'song4.mp3'
+                }]
+
+
+
+                window.onload = function() {
+
+                      for(var i =0; i < songs.length; i++) {
+                          var obj = songs[i];
+                          var name = '#song' + (i+1);
+                          var song = $(name);
+                          song.find('.song-name').text(obj.name);
+                          song.find('.song-artist').text(obj.artist);
+                          song.find('.song-album').text(obj.album);
+                          song.find('.song-length').text(obj.duration);
+                          addSongNameClickEvent(obj.fileName,i+1);
+                      }
                   }
-              });
-//for 4th song
-              $('#song4').click(function() {
-              var audio = document.querySelector('audio');
-              var currentSong = audio.src;
-              if(currentSong.search(fileNames[4]) != -1)
-                {
-                  toggleSong();
-                }
-              else {
-                  audio.src = fileNames[0];
-                    toggleSong();
-                  }
-              });
+
+
 
 
 
@@ -184,6 +179,159 @@ $('body').on('keypress',function(event) {
 
 
 
+
+
+
+
+//
+//       //refrence code 1.0,2.0  code for calling of function addSongNameClickEvent by using automatic for loop
+//             for (var i = 0; i < fileNames.length; i++) {    //fileNames.length is the length of array of songs added
+//                 addSongNameClickEvent(fileNames[i],i+1);
+//               }
+//
+//
+//             //Array OF Song Name
+//               var songList = [
+//                                 'Badri Ki Dulhania (Title Track)',  //[0] of songList that is songList[0]; like wise
+//                                 'Humma Song',
+//                                 'Nashe Si Chadh Gayi',
+//                                 'The Breakup Song'
+//                               ];
+//
+//           //array for songs artist name
+//             var artistList = [
+//                                 'Artist #1',
+//                                 'Artist #2',
+//                                 'Artist #3',
+//                                 'Artist #4',
+//                               ];
+//         //array of Songs albumList
+//             var albumList = [
+//                             'Badrinath ki Dulhania',
+//                             'Ok Jaanu',
+//                             'Befikre',
+//                             'Ae Dil Hai Mushkil'
+//                           ];
+// //array of song play duration
+//           var durationList = [
+//                                 '2:56',
+//                                 '3:15',
+//                                 '2:34',
+//                                 '2:29'
+//                             ];
+//
+// // after loading html files this js code will run automatically
+//           window.onload = function() {
+//
+//               for(var i =0; i < songList.length;i++) {
+//                   var name = '#song' + (i+1);
+//                   var song = $(name);
+//                   song.find('.song-name').text(songList[i]);
+//                   song.find('.song-artist').text(artistList[i]);
+//                   song.find('.song-album').text(albumList[i]); // Added
+//                   song.find('.song-length').text(durationList[i]); // Added
+//                   updateCurrentTime();                        //it will update the Current time of played song
+//                   setInterval(function() {
+//                     updateCurrentTime();
+//                   },1000);                                     //this function say to update Current time at each (1 sec =1000) 1 second
+//                 }
+//               }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //after Loading The Html File This Js Code Will Automatically Run
+//         window.onload = function() {
+//               $('#song1 .song-name').text(songList[0]); //code for secectiong id=Song1 inside class=song-name and add text or inner text first element 'string' of array SongList[];
+//               $('#song2 .song-name').text(songList[1]);
+//               $('#song3 .song-name').text(songList[2]);
+//               $('#song4 .song-name').text(songList[3]);
+//               updateCurrentTime();                        //it will update the Current time of played song
+//               setInterval(function() {
+//                 updateCurrentTime();
+//               },1000);                                     //this function say to update Current time at each (1 sec =1000) 1 second
+//             }
+
+// //code for passing the variable valuse to function
+//           $('#song1 .song-artist').text(artistList[0]);
+//           $('#song2 .song-artist').text(artistList[1]);
+//           $('#song3 .song-artist').text(artistList[2]);
+//           $('#song4 .song-artist').text(artistList[3]);
+
+// // refrence code 1.0 code for calling of function addSongNameClickEvent
+// addSongNameClickEvent(fileNames[0],1);          //fileNames[0] and 1 is the value which is passes through the function
+// addSongNameClickEvent(fileNames[1],2);
+// addSongNameClickEvent(fileNames[2],3);
+// addSongNameClickEvent(fileNames[3],4);
+
+
+
+
+//
+// // refrence 2.0 version 0 level //Code For Playing 1st song by clicking on it
+//               $('#song1').click(function() {
+//               var audio = document.querySelector('audio');
+//               var currentSong = audio.src;
+//               if(currentSong.search(fileNames[0]) != -1) //check for string are match or not with old played song
+//                 {
+//                   toggleSong();
+//                 }
+//               else {
+//                   audio.src = fileNames[0];
+//                   toggleSong();
+//                   }
+//               });
+// //for 2nd song
+//               $('#song2').click(function() {
+//               var audio = document.querySelector('audio');
+//               var currentSong = audio.src;
+//               if(currentSong.search(fileNames[1]) != -1)
+//                 {
+//                   toggleSong();
+//                 }
+//               else {
+//                   audio.src = fileNames[1];
+//                     toggleSong();
+//                   }
+//               });
+// //for 3rd song
+//               $('#song3').click(function() {
+//               var audio = document.querySelector('audio');
+//               var currentSong = audio.src;
+//               if(currentSong.search(fileNames[2]) != -1)
+//                 {
+//                   toggleSong();
+//                 }
+//               else {
+//                   audio.src = fileNames[2];
+//                     toggleSong();
+//                   }
+//               });
+// //for 4th song
+//               $('#song4').click(function() {
+//               var audio = document.querySelector('audio');
+//               var currentSong = audio.src;
+//               if(currentSong.search(fileNames[4]) != -1)
+//                 {
+//                   toggleSong();
+//                 }
+//               else {
+//                   audio.src = fileNames[0];
+//                     toggleSong();
+//                   }
+//               });
+//
 
 
 
