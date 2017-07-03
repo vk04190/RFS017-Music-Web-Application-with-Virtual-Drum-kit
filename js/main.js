@@ -168,5 +168,7 @@ $('body').on('keypress',function(event) {
                           song.find('.song-length').text(obj.duration);
                           addSongNameClickEvent(obj,i+1); //function call by passing object value and position information
                       }
-                  $('#songs').DataTable(); //code for initializing data table on our table
+                  $('#songs').DataTable({
+                    paging: false    //code forhiding page number from the tables
+                  }); //code for initializing data table on our table
                   }

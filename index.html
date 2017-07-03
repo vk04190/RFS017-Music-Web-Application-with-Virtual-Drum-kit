@@ -6,8 +6,8 @@
     <title> Song App</title>
     <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0\css\font-awesome.css">
     <!-- css cdn link of Data Table jquery plugin -->
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="DataTable\jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="DataTable\jquery.dataTables.min.css"> -->
     <link rel="stylesheet" type="text/css" href="stylesheet\main.css">
 </head>
 
@@ -34,40 +34,41 @@
           <audio src="song.mp3"></audio>
 
   <!-- Header of song play list start from here -->
-          <div class="list-headers">
-              <div> Title </div>
-              <div> Artist </div>
-              <div> Album </div>
-              <div> Duration </div>
-          </div>
+    <table id="songs">
+          <thead class="list-headers">
+              <td> Title </td>
+              <td> Artist </td>
+              <td> Album </td>
+              <td> Duration </td>
+          </thead>
 
   <!-- song Playlist here added dynamically by javascript -->
-          <div class="song-list">
-              <div class="song" id="song1">
-                <span class="song-name"></span>
-                <span class="song-artist"></span>
-                <span class="song-album"></span>
-                <span class="song-length"></span>
-              </div>
-              <div class="song" id="song2">
-                <span class="song-name"></span>
-                <span class="song-artist"></span>
-                <span class="song-album"></span>
-                <span class="song-length"></span>
-              </div>
-              <div class="song" id="song3">
-                <span class="song-name"></span>
-                <span class="song-artist"></span>
-                <span class="song-album"></span>
-                <span class="song-length"></span>
-              </div>
-              <div class="song" id="song4">
-                <span class="song-name"></span>
-                <span class="song-artist"></span>
-                <span class="song-album"></span>
-                <span class="song-length"></span>
-              </div>
+              <tr class="song" id="song1">
+                <td class="song-name"></td>
+                <td class="song-artist"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+              </tr>
+              <tr class="song" id="song2">
+                <td class="song-name"></td>
+                <td class="song-artist"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+              </tr>
+              <tr class="song" id="song3">
+                <td class="song-name"></td>
+                <td class="song-artist"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+              </tr>
+              <tr class="song" id="song4">
+                <td class="song-name"></td>
+                <td class="song-artist"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+              </tr>
             </div>
+          </table>
             <!-- code for view current song  -->
             <div class="current-song-wrapper">
                     <img src="img/song1.jpg" class="current-song-image">

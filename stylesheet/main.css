@@ -200,3 +200,20 @@ h1 {
 .current-song-album {
     margin-top: 0.4rem;
 }
+
+            /*DataTables overrides*/
+table.dataTable tbody tr {
+    background-color: initial;
+}
+#songs_info {
+    display: none;
+}
+
+#songs_filter {
+    color: transparent;
+}
+#songs_filter input {
+    width: 400px;
+    margin-bottom: 1rem;
+    font-size: 16px;
+}
