@@ -130,9 +130,8 @@ $('body').on('keypress',function(event) {
                       $('.song-duration').text(duration);
                   }
 
-
+              var songNumber=1; //initial song number
       // new Smart Function For Doing all songs playing on click by it self
-
             function addSongNameClickEvent(songObj,position) {
                 var songName = songObj.fileName;
                 var id = '#song' + position;
