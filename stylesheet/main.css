@@ -217,3 +217,11 @@ table.dataTable tbody tr {
     margin-bottom: 1rem;
     font-size: 16px;
 }
+/*css for play pause and other button*/
+.player-buttons .fa {
+    margin-right: 2rem;
+}
+
+.fa.disabled {
+    color: gray;
+}

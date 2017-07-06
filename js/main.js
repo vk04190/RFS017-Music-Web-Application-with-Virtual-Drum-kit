@@ -1,20 +1,7 @@
-
-
-
-$('.welcome-screen button').on('click', function() {
-    var name = $('#name-input').val();
-    if(name.length >2){
-    var message = "Welcome, " + name;
-    $('.main .user-name').text(message);
-    $('.welcome-screen').addClass('hidden');
-    $('.main').removeClass('hidden');
-  }
-  else{
-    $('#name-input').addClass('error');
-    alert("Please Enter a Valid Name");
-    $('.warning').removeClass('hidden');
-  }
-});
+var currentSongNumber = 1;
+var willLoop = 0;
+var willShuffle = 0;
+var songNumber=1; //initial song number
 
 
 // Array of objects for storing the Song details
@@ -50,6 +37,8 @@ $('.welcome-screen button').on('click', function() {
                     'fileName': 'song4.mp3',
                     'image': 'song4.jpg'
                 }];
+
+
                 // javascript function for converting a bulks seconds into a standandard time format
                 //here 'time' is a formal parameter which is passed(takes values) by the calling function like 'currentTime' and 'duration'
                             function fancyTimeFormat(time)
@@ -73,6 +62,23 @@ $('.welcome-screen button').on('click', function() {
                                                           ret += "" + secs;      //if only seconds are presented in time variable the it will shows like 20
                                                           return ret;           //after that it will return the value to the function from local variable ret to the storge variable
                                                       }
+
+$('.welcome-screen button').on('click', function() {
+    var name = $('#name-input').val();
+    if(name.length >2){
+    var message = "Welcome, " + name;
+    $('.main .user-name').text(message);
+    $('.welcome-screen').addClass('hidden');
+    $('.main').removeClass('hidden');
+  }
+  else{
+    $('#name-input').addClass('error');
+    alert("Please Enter a Valid Name");
+    $('.warning').removeClass('hidden');
+  }
+});
+
+
 
 //fuction for Audio Play and Pause
 function toggleSong(){
@@ -102,11 +108,12 @@ $('.play-icon').on('click',function(event){
 
 //code for Calling the function when the spacebar(32) is prassed from keyboard
 $('body').on('keypress',function(event) {
-  if (event.keyCode == 32)
-  {
-    toggleSong();
+    var target = event.target;
+    if (event.keyCode == 32 && target.tagName !='INPUT')
+    {
+        toggleSong();
     }
-  });
+});
 
   //function for changing current song details when ever songs chnages
               function changeCurrentSongDetails(songobj){
@@ -130,7 +137,7 @@ $('body').on('keypress',function(event) {
                       $('.song-duration').text(duration);
                   }
 
-              var songNumber=1; //initial song number
+
       // new Smart Function For Doing all songs playing on click by it self
             function addSongNameClickEvent(songObj,position) {
                 var songName = songObj.fileName;
@@ -147,6 +154,81 @@ $('body').on('keypress',function(event) {
                     toggleSong();
                   });
             }
+// code for looping song
+$('.fa-repeat').on('click',function() {
+    $('.fa-repeat').toggleClass('disabled')
+    willLoop = 1 - willLoop;
+});
+
+//code for suffale songs$('.fa-random').on('click',function() {
+$('.fa-random').on('click',function() {
+    $('.fa-random').toggleClass('disabled')
+    willShuffle = 1 - willShuffle;
+});
+
+
+
+// // code for jump the song and text go for next
+// function timeJump() {
+//     var song = document.querySelector('audio')
+//     song.currentTime = song.duration - 5;
+// }
+
+
+
+// play for next song when 1 song ended
+$('audio').on('ended',function() {
+    var audio = document.querySelector('audio');
+    if (willShuffle == 1) {
+        var nextSongNumber = randomExcluded(1,4,currentSongNumber); // Calling our function from Stackoverflow
+        var nextSongObj = songs[nextSongNumber-1];
+        audio.src = nextSongObj.fileName;
+        toggleSong();
+        changeCurrentSongDetails(nextSongObj);
+        currentSongNumber = nextSongNumber;
+    }
+    else if(currentSongNumber < 4) {
+        var nextSongObj = songs[currentSongNumber];
+        audio.src = nextSongObj.fileName;
+        toggleSong();
+        changeCurrentSongDetails(nextSongObj);
+        currentSongNumber = currentSongNumber + 1;
+    }
+    else if(willLoop == 1) {
+        var nextSongObj = songs[0];
+        audio.src = nextSongObj.fileName;
+        toggleSong();
+        changeCurrentSongDetails(nextSongObj);
+        currentSongNumber =  1;
+    }
+    else {
+        $('.play-icon').removeClass('fa-pause').addClass('fa-play');
+        audio.currentTime = 0;
+    }
+})
+// $('audio').on('ended',function() {
+//     var audio = document.querySelector('audio');
+//     if(currentSongNumber < 4) {
+//         var nextSongObj = songs[currentSongNumber];
+//         audio.src = nextSongObj.fileName;
+//         toggleSong();
+//         changeCurrentSongDetails(nextSongObj);
+//         currentSongNumber = currentSongNumber + 1;
+//     }
+//     else if(willLoop == 1) {
+//         var nextSongObj = songs[0];
+//         audio.src = nextSongObj.fileName;
+//         toggleSong();
+//         changeCurrentSongDetails(nextSongObj);
+//         currentSongNumber =  1;
+//     }
+//     else {
+//         $('.play-icon').removeClass('fa-pause').addClass('fa-play');
+//         audio.currentTime = 0;
+//     }
+// })
+
+
 
 
 //whenever the html document is loaded , only after that , run this function
