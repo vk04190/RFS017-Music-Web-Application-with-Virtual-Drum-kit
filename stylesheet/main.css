@@ -112,11 +112,10 @@ h1 {
 }
 
 .progress-filled {
-    background-color: #959595;
+    background-color: rgb(8, 152, 70);
     height: 8px;
     border-radius: 4px;
     width: 0;
-
 }
 
 .main .content {

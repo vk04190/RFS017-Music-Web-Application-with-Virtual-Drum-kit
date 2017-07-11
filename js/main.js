@@ -206,30 +206,6 @@ $('audio').on('ended',function() {
         audio.currentTime = 0;
     }
 })
-// $('audio').on('ended',function() {
-//     var audio = document.querySelector('audio');
-//     if(currentSongNumber < 4) {
-//         var nextSongObj = songs[currentSongNumber];
-//         audio.src = nextSongObj.fileName;
-//         toggleSong();
-//         changeCurrentSongDetails(nextSongObj);
-//         currentSongNumber = currentSongNumber + 1;
-//     }
-//     else if(willLoop == 1) {
-//         var nextSongObj = songs[0];
-//         audio.src = nextSongObj.fileName;
-//         toggleSong();
-//         changeCurrentSongDetails(nextSongObj);
-//         currentSongNumber =  1;
-//     }
-//     else {
-//         $('.play-icon').removeClass('fa-pause').addClass('fa-play');
-//         audio.currentTime = 0;
-//     }
-// })
-
-
-
 
 //whenever the html document is loaded , only after that , run this function
             window.onload = function() {
@@ -237,6 +213,7 @@ $('audio').on('ended',function() {
                 updateCurrentTime();
                 setInterval(function() {
                     updateCurrentTime();
+                    updateTimer();
                   },1000);
 
 //fetch from database - ajax ,backend , Server
@@ -287,21 +264,22 @@ $('audio').on('ended',function() {
                     }
                   })
 
-                  //progress bar k liye funcn bnaya
+                  //code for showing the progress of song played
                   function updateTimer(){
                     var song = document.querySelector('audio');
-                    var ct = song.currentTime;
-                    var td = song.duration;
-                    var percentage = (ct/td)*100;
-                    $('.progress-filled').css('width',percentage+"%");//progress-filled k clss k css m jo percnt aaya h vo width krdo
+                    var current = song.currentTime;
+                    var total = song.duration;
+                    var percentage = (current/total)*100;   //cullculatin for curreret percentege
+                    $('.progress-filled').css('width',percentage+"%");    //by using css width property it show the duration of song played
+                    }
 
-                  }
 
-                  $('.player-progress').click(function(event){ //jb bhi player progress k clss m click ho
+                  // code for click on progress bar to increase and decrease song time
+                  $('.player-progress').click(function(event){
                     var $this = $(this);
-                    var widthclicked = event.pageX - $this.offset().left; // left s kitni duri p pointer click k position h
-                    var totalWidth = $this.width(); //or jitni width aayi h store krdo
-                    var calc = (widthclicked / totalWidth) * 100;
+                    var MouseLeft = event.pageX - $this.offset().left; // to detact the mouse pointer click on left of progress bar
+                    var TotalWidth = $this.width(); 
+                    var progress = (MouseLeft / TotalWidth) * 100;
                     var song = document.querySelector('audio');
-                    song.currentTime = (song.duration*calc)/100;
+                    song.currentTime = (song.duration*progress)/100;
                   });

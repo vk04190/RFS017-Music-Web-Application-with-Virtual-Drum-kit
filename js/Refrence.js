@@ -1,3 +1,25 @@
+// $('audio').on('ended',function() {
+//     var audio = document.querySelector('audio');
+//     if(currentSongNumber < 4) {
+//         var nextSongObj = songs[currentSongNumber];
+//         audio.src = nextSongObj.fileName;
+//         toggleSong();
+//         changeCurrentSongDetails(nextSongObj);
+//         currentSongNumber = currentSongNumber + 1;
+//     }
+//     else if(willLoop == 1) {
+//         var nextSongObj = songs[0];
+//         audio.src = nextSongObj.fileName;
+//         toggleSong();
+//         changeCurrentSongDetails(nextSongObj);
+//         currentSongNumber =  1;
+//     }
+//     else {
+//         $('.play-icon').removeClass('fa-pause').addClass('fa-play');
+//         audio.currentTime = 0;
+//     }
+// })
+
 
 
 // //Code for auto song Scan from file by its name
