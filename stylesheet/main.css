@@ -219,10 +219,10 @@ table.dataTable tbody tr {
     border: 0px;
     border-radius: 2px;
     padding: 5px;
-    text-align: center;
-    background: rgb(172, 170, 172);
-    color: white;
     font-family: times;
+}
+label{
+  color: white;
 }
 #songs_filter input:hover {
   border: 1px solid red;
@@ -234,4 +234,12 @@ table.dataTable tbody tr {
 
 .fa.disabled {
     color: gray;
+}
+#drumkitBtn{
+  position: absolute;
+  background-color: #1f1f1f;
+
+}
+#drumkitBtn:hover{
+  background: white;
 }
