@@ -213,9 +213,20 @@ table.dataTable tbody tr {
     color: transparent;
 }
 #songs_filter input {
-    width: 400px;
+    width: 300px;
+    height: 24px;
     margin-bottom: 1rem;
     font-size: 16px;
+    border: 0px;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+    background: rgb(172, 170, 172);
+    color: white;
+    font-family: times;
+}
+#songs_filter input:hover {
+  border: 1px solid red;
 }
 /*css for play pause and other button*/
 .player-buttons .fa {
