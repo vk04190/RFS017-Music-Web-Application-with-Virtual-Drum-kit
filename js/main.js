@@ -254,3 +254,54 @@ $('audio').on('ended',function() {
                     paging: false    //code forhiding page number from the tables
                   }); //code for initializing data table on our table
                   }
+
+
+// -------------------------------------------------------------------------------
+
+                  // function for play next song on click next button
+                  $('.next-icon').on('click',function() {
+                    var audio = document.querySelector('audio');
+                    if(currentSongNumber < songs.length) {    //check for next song it must be less
+                      var next = songs[currentSongNumber];
+                      audio.src = next.fileName;
+                      toggleSong();
+                      changeCurrentSongDetails(next);
+                      currentSongNumber = currentSongNumber + 1;  //it will increases the song numbers
+
+                    }
+                  else{
+                  currentSongNumber = 0; //if currentsong equal songs.length it go for first song
+                  }
+                  })
+
+                  // function for playing previous song
+                  $('.back-icon').on('click',function() {
+                    var audio = document.querySelector('audio');
+                    if(currentSongNumber > 0 && currentSongNumber < songs.length) { //current song must be greater the 0 and also be less then total length
+                      var back = songs[currentSongNumber - 1];
+                      audio.src = back.fileName;
+                      toggleSong();
+                      changeCurrentSongDetails(back);
+                      currentSongNumber = currentSongNumber - 1;          //so it will decrease the song numbers
+
+                    }
+                  })
+
+                  //progress bar k liye funcn bnaya
+                  function updateTimer(){
+                    var song = document.querySelector('audio');
+                    var ct = song.currentTime;
+                    var td = song.duration;
+                    var percentage = (ct/td)*100;
+                    $('.progress-filled').css('width',percentage+"%");//progress-filled k clss k css m jo percnt aaya h vo width krdo
+
+                  }
+
+                  $('.player-progress').click(function(event){ //jb bhi player progress k clss m click ho
+                    var $this = $(this);
+                    var widthclicked = event.pageX - $this.offset().left; // left s kitni duri p pointer click k position h
+                    var totalWidth = $this.width(); //or jitni width aayi h store krdo
+                    var calc = (widthclicked / totalWidth) * 100;
+                    var song = document.querySelector('audio');
+                    song.currentTime = (song.duration*calc)/100;
+                  });
