@@ -5,7 +5,17 @@ var songNumber=1; //initial song number
 
 
 // Array of objects for storing the Song details
-            var songs = [{
+            var songs = [
+              // ----------------------------------New Songs Added---------------------------------
+              {
+                  'name': 'Alla Hafiz',
+                  'artist': 'Niraj Shreedhar',
+                  'album': 'Bhool Bhulaiyaa',
+                  'duration': '04:33',
+                  'fileName': 'Audio/Alla Hafiz.mp3',
+                  'image': 'Bhool Bhulaiyaa.jpg'
+              },
+              {
                     'name': 'Badri Ki Dulhania (Title Track)',
                     'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
                     'album': 'Badrinath ki Dulhania',
@@ -180,14 +190,14 @@ $('.fa-random').on('click',function() {
 $('audio').on('ended',function() {
     var audio = document.querySelector('audio');
     if (willShuffle == 1) {
-        var nextSongNumber = randomExcluded(1,4,currentSongNumber); // Calling our function from Stackoverflow
+        var nextSongNumber = randomExcluded(1,5,currentSongNumber); // Calling our function from Stackoverflow
         var nextSongObj = songs[nextSongNumber-1];
         audio.src = nextSongObj.fileName;
         toggleSong();
         changeCurrentSongDetails(nextSongObj);
         currentSongNumber = nextSongNumber;
     }
-    else if(currentSongNumber < 4) {
+    else if(currentSongNumber < 5) {
         var nextSongObj = songs[currentSongNumber];
         audio.src = nextSongObj.fileName;
         toggleSong();
