@@ -10,7 +10,7 @@ var songNumber=1; //initial song number
                     'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
                     'album': 'Badrinath ki Dulhania',
                     'duration': '2:56',
-                   'fileName': 'song1.mp3',
+                   'fileName': 'Audio/song1.mp3',
                    'image': 'song1.jpg'
                 },
                 {
@@ -18,7 +18,7 @@ var songNumber=1; //initial song number
                     'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
                     'album': 'Ok Jaanu',
                     'duration': '3:15',
-                    'fileName': 'song2.mp3',
+                    'fileName': 'Audio/song2.mp3',
                     'image': 'song2.jpg'
                 },
                 {
@@ -26,7 +26,7 @@ var songNumber=1; //initial song number
                     'artist': 'Arijit Singh',
                     'album': 'Befikre',
                     'duration': '2:34',
-                    'fileName': 'song3.mp3',
+                    'fileName': 'Audio/song3.mp3',
                     'image': 'song3.jpg'
                 },
                 {
@@ -34,7 +34,7 @@ var songNumber=1; //initial song number
                     'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
                     'album': 'Ae Dil Hai Mushkil',
                     'duration': '2:29',
-                    'fileName': 'song4.mp3',
+                    'fileName': 'Audio/song4.mp3',
                     'image': 'song4.jpg'
                 }];
 
@@ -278,7 +278,7 @@ $('audio').on('ended',function() {
                   $('.player-progress').click(function(event){
                     var $this = $(this);
                     var MouseLeft = event.pageX - $this.offset().left; // to detact the mouse pointer click on left of progress bar
-                    var TotalWidth = $this.width(); 
+                    var TotalWidth = $this.width();
                     var progress = (MouseLeft / TotalWidth) * 100;
                     var song = document.querySelector('audio');
                     song.currentTime = (song.duration*progress)/100;
