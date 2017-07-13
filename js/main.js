@@ -83,7 +83,6 @@ $('.welcome-screen button').on('click', function() {
   }
   else{
     $('#name-input').addClass('error');
-    alert("Please Enter a Valid Name");
     $('.warning').removeClass('hidden');
   }
 });

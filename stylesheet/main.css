@@ -17,11 +17,38 @@ h1 {
     border: 0;
     margin: 0;
 }
+h3{
+  padding-top: 50px;
+}
 
 .wrapper {
     height: 100%;
     width: 100%;
-    background-color: #BBB;
+    color: white;
+    background: #070000;
+    background: -webkit-linear-gradient(left, #070000, #4c0001, #070000);
+    background: -o-linear-gradient(left, #070000, #4c0001, #070000);
+    background: linear-gradient(to right, #070000, #4c0001, #070000);
+}
+.wrapper input{
+  padding: 5px;
+  border: 0px;
+  color: black;
+  border-radius: 2px;
+}
+.wrapper button{
+  padding: 5px 15px;
+  margin-left: 5px;
+  border: 0px;
+  background: black;
+  border-radius: 2px;
+}
+.wrapper button:hover{
+  padding: 5px 15px;
+  border: 0px;
+  background: White;
+  color: black;
+  border-radius: 2px;
 }
 
 .welcome-screen {
